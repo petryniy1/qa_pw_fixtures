@@ -5,12 +5,12 @@ import { EditArticlePage } from '../../src/ui/pages/article/EditArticlePage';
 import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 
 export const test = base.extend<{
-  createArticlePage;
-  viewArticlePage;
-  editArticlePage;
-  articleWithoutTags;
-  articleWithOneTag;
-  articleWithTwoTags;
+  createArticlePage: CreateArticlePage;
+  viewArticlePage: ViewArticlePage;
+  editArticlePage: EditArticlePage;
+  articleWithoutTags: Array<String>;
+  articleWithOneTag: Array<String>;
+  articleWithTwoTags: Array<String>;
 }>({
   createArticlePage: async ({ page }, use) => {
     await use(new CreateArticlePage(page));

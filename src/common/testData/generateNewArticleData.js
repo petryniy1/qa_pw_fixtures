@@ -11,7 +11,7 @@ export function generateNewArticleData(tagNumber = 0, logger = null) {
   };
 
   if (logger) {
-    logger.debug(`New article generated: ${JSON.stringify(article)}`);
+    logger.debug(`New article generated: ${article}`);
   }
 
   return article;
