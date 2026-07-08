@@ -16,5 +16,6 @@ test('Remove the article text for the existing article', async ({
   await editArticlePage.deleteFieldText(editArticlePage.textField);
   await editArticlePage.clickUpdateArticleButton();
 
+  
   await editArticlePage.assertErrorMessageContainsText(BODY_CANNOT_BE_EMPTY);
 });
