@@ -9,6 +9,7 @@ export class CreateArticlePage {
     this.publishArticleButton = page.getByRole('button', {
       name: 'Publish Article',
     });
+    this.tagsField = page.getByPlaceholder('Enter tags');
     this.errorMessage = page.getByRole('list').nth(1);
   }
 
@@ -34,6 +35,17 @@ export class CreateArticlePage {
     await test.step(`Click the 'Publish Article' button`, async () => {
       await this.publishArticleButton.click();
     });
+  }
+
+  async fillTagsField(tagsArray) {
+    if (Array.isArray(tagsArray) && tagsArray.length) {
+      for (const tag of tagsArray) {
+        await test.step(`Add tag: "${tag}"`, async () => {
+          await this.tagsField.fill(tag);
+          await this.page.keyboard.press('Enter');
+        });
+      }
+    }
   }
 
   async assertErrorMessageContainsText(messageText) {

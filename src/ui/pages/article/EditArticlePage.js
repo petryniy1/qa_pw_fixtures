@@ -54,7 +54,7 @@ export class EditArticlePage {
     if (!Array.isArray(tagsArray) || !tagsArray.length) return;
 
     for (const tag of tagsArray) {
-      await test.step(`Update tag: "${tag}"`, async () => {
+      await test.step(`Update with tag: "${tag}"`, async () => {
         await this.tagsField.fill(tag);
         await this.page.keyboard.press('Enter');
       });

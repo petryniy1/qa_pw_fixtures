@@ -1,32 +1,22 @@
-import { test } from '@playwright/test';
-import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
-import { generateNewUserData } from '../../src/common/testData/generateNewUserData';
+import { test } from '../_fixtures/fixtures';
 import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
-import { ViewArticlePage } from '../../src/ui/pages/article/ViewArticlePage';
-import { EditArticlePage } from '../../src/ui/pages/article/EditArticlePage';
 
-let viewArticlePage;
-let editArticlePage;
-let article;
-
-test.beforeEach(async ({ page }) => {
-  viewArticlePage = new ViewArticlePage(page);
-  editArticlePage = new EditArticlePage(page);
-
-  const user = generateNewUserData();
-  article = generateNewArticleData(5);
-
+test.beforeEach(async ({ page, user, articleWithTwoTags, viewArticlePage }) => {
   await signUpUser(page, user);
-  await createNewArticle(page, article);
+  await createNewArticle(page, articleWithTwoTags)
 
   await viewArticlePage.clickEditButton();
 });
 
-test('Add the tag for the existing article with tags', async ({ page }) => {
-  article = generateNewArticleData(3);
+test('Add the tag for the existing article with tags', async ({
+  page,
+  articleWithOneTag,
+  editArticlePage,
+  viewArticlePage,
+}) => {
 
-  const newTags = article.tags;
+  const newTags = articleWithOneTag.tags;
 
   await editArticlePage.updateTagsField(newTags);
   await editArticlePage.clickUpdateArticleButton();

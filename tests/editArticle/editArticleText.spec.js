@@ -1,28 +1,19 @@
-import { test } from '@playwright/test';
-import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
-import { generateNewUserData } from '../../src/common/testData/generateNewUserData';
+import { test } from '../_fixtures/fixtures';
 import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
-import { ViewArticlePage } from '../../src/ui/pages/article/ViewArticlePage';
-import { EditArticlePage } from '../../src/ui/pages/article/EditArticlePage';
 
-let viewArticlePage;
-let editArticlePage;
-
-test.beforeEach(async ({ page }) => {
-  viewArticlePage = new ViewArticlePage(page);
-  editArticlePage = new EditArticlePage(page);
-
-  const user = generateNewUserData();
-  const article = generateNewArticleData(5);
-
+test.beforeEach(async ({ page, user, articleWithTwoTags, viewArticlePage }) => {
   await signUpUser(page, user);
-  await createNewArticle(page, article);
+  await createNewArticle(page, articleWithTwoTags);
 
   await viewArticlePage.clickEditButton();
 });
 
-test('Edit the article text for the existing article', async ({ page }) => {
+test('Edit the article text for the existing article', async ({
+  page,
+  editArticlePage,
+  viewArticlePage,
+}) => {
   const newBodyText = 'Good day';
 
   await editArticlePage.updateTextField(newBodyText);
