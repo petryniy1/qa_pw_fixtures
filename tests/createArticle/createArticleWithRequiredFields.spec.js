@@ -9,7 +9,7 @@ test('Creat an article with required fields', async ({
   homePage,
   createArticlePage,
   viewArticlePage,
-  articleWithTwoTags
+  articleWithTwoTags,
 }) => {
   await homePage.clickNewArticleLink();
 

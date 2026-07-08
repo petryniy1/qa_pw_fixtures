@@ -16,7 +16,7 @@ export async function createNewArticle(page, article) {
   if (Array.isArray(article.tags) && article.tags.length > 0) {
     await createArticlePage.fillTagsField(article.tags);
   }
-  
+
   await createArticlePage.clickPublishArticleButton();
 
   await viewArticlePage.assertArticleTitleIsVisible(article.title);

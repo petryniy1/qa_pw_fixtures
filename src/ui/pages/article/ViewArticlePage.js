@@ -36,16 +36,18 @@ export class ViewArticlePage {
 
   async assertArticleTagIsVisible(tags) {
     for (const tag of tags) {
-      await test.step(`Assert the article tag "${tag}" is visible`, async () => {
-        await expect(this.page.getByText(tag)).toBeVisible();
+      await test.step(`Assert the article tag "${tag}" is visible`,
+        async () => {
+          await expect(this.page.getByText(tag)).toBeVisible();
       });
     }
   }
 
   async assertArticleTagIsDeleted(tags) {
     for (const tag of tags) {
-      await test.step(`Assert the article tag "${tag}" is deleted`, async () => {
-        await expect(this.page.getByText(tag)).toHaveCount(0);
+      await test.step(`Assert the article tag "${tag}" is deleted`, 
+        async () => {
+          await expect(this.page.getByText(tag)).toHaveCount(0);
       });
     }
   }

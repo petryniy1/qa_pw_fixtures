@@ -4,7 +4,7 @@ import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
 
 test.beforeEach(async ({ page, user, articleWithTwoTags, viewArticlePage }) => {
   await signUpUser(page, user);
-  await createNewArticle(page, articleWithTwoTags)
+  await createNewArticle(page, articleWithTwoTags);
 
   await viewArticlePage.clickEditButton();
 });
@@ -15,7 +15,6 @@ test('Add the tag for the existing article with tags', async ({
   editArticlePage,
   viewArticlePage,
 }) => {
-
   const newTags = articleWithOneTag.tags;
 
   await editArticlePage.updateTagsField(newTags);

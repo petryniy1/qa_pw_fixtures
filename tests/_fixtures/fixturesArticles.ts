@@ -12,27 +12,27 @@ export const test = base.extend<{
   articleWithOneTag;
   articleWithTwoTags;
 }>({
-    createArticlePage: async ({page}, use) => {
-        await use(new CreateArticlePage(page));
-    },
+  createArticlePage: async ({ page }, use) => {
+    await use(new CreateArticlePage(page));
+  },
 
-    viewArticlePage: async ({page}, use) => {
-        await use(new ViewArticlePage(page));
-    },
+  viewArticlePage: async ({ page }, use) => {
+    await use(new ViewArticlePage(page));
+  },
 
-    editArticlePage: async ({page}, use) => {
-        await use(new EditArticlePage(page));
-    },
+  editArticlePage: async ({ page }, use) => {
+    await use(new EditArticlePage(page));
+  },
 
-    articleWithoutTags: async ({logger}, use) => {
-        await use(generateNewArticleData(0, logger));
-    },
+  articleWithoutTags: async ({ logger }, use) => {
+    await use(generateNewArticleData(0, logger));
+  },
 
-    articleWithOneTag: async ({logger}, use) => {
-        await use(generateNewArticleData(1, logger));
-    },
+  articleWithOneTag: async ({ logger }, use) => {
+    await use(generateNewArticleData(1, logger));
+  },
 
-    articleWithTwoTags: async ({logger}, use) => {
-        await use(generateNewArticleData(2, logger))
-    }
+  articleWithTwoTags: async ({ logger }, use) => {
+    await use(generateNewArticleData(2, logger));
+  },
 });

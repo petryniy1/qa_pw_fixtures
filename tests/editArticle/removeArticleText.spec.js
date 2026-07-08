@@ -1,7 +1,7 @@
 import { test } from '../_fixtures/fixtures';
 import { createNewArticle } from '../../src/ui/actions/article/createNewArticle';
 import { signUpUser } from '../../src/ui/actions/auth/signUpUser';
-import { BODY_CANNOT_BE_EMPTY} from '../../src/ui/constants/articleErrorMessages';
+import { BODY_CANNOT_BE_EMPTY } from '../../src/ui/constants/articleErrorMessages';
 
 test.beforeEach(async ({ page, user, articleWithTwoTags, viewArticlePage }) => {
   await signUpUser(page, user);
