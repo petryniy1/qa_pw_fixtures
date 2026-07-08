@@ -10,7 +10,7 @@ export function generateNewUserData(logger) {
     password: faker.internet.password(),
   };
 
-  logger.debug(`Generated new user: ${JSON.stringify(user)}`);
+  //logger.debug(`Generated new user: ${JSON.stringify(user)}`);
 
   return user;
 }
