@@ -4,13 +4,20 @@ import { ViewArticlePage } from '../../src/ui/pages/article/ViewArticlePage';
 import { EditArticlePage } from '../../src/ui/pages/article/EditArticlePage';
 import { generateNewArticleData } from '../../src/common/testData/generateNewArticleData';
 
+export interface Article {
+  title: string;
+  description: string;
+  text: string;
+  tags: string[];
+}
+
 export const test = base.extend<{
   createArticlePage: CreateArticlePage;
   viewArticlePage: ViewArticlePage;
   editArticlePage: EditArticlePage;
-  articleWithoutTags: Array<String>;
-  articleWithOneTag: Array<String>;
-  articleWithTwoTags: Array<String>;
+  articleWithoutTags: Article;
+  articleWithOneTag: Article;
+  articleWithTwoTags: Article;
 }>({
   createArticlePage: async ({ page }, use) => {
     await use(new CreateArticlePage(page));
