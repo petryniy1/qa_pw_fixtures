@@ -13,6 +13,7 @@ test('Edit the article text for the existing article', async ({
   page,
   editArticlePage,
   viewArticlePage,
+  articleWithTwoTags
 }) => {
   const newBodyText = 'Good day';
 
@@ -23,4 +24,5 @@ test('Edit the article text for the existing article', async ({
   await page.reload();
 
   await viewArticlePage.assertArticleTextIsVisible(newBodyText);
+  await viewArticlePage.assertArticleTagIsVisible(articleWithTwoTags.tags)
 });
